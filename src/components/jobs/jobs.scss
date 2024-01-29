@@ -1,0 +1,54 @@
+@import "/src/Config/config-colors.scss";
+
+.job-card {
+  display: flex;
+  flex-direction: column;
+  background: $White;
+  border-radius: 6px;
+  width: 350px;
+  height: 228px;
+  padding: 0 32px;
+  border: none;
+  text-align: start;
+  cursor: pointer;
+  outline: none;
+}
+.jobs-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 1050px;
+  margin-top: 150px;
+  padding-bottom: 140px;
+}
+.jobs-center-box {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 80%;
+  gap: 30px;
+}
+.logo {
+  position: relative;
+  bottom: 20px;
+  left: 5px;
+}
+.rate {
+  color: $DarkGray;
+}
+.position {
+  font-size: 20px;
+}
+.company {
+  color: $DarkGray;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.location {
+  color: $violet;
+  font-weight: 700;
+  margin-top: 45px;
+}
