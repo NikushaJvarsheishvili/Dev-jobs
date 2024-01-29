@@ -1,0 +1,147 @@
+@import "/src/Config/config-colors.scss";
+
+/* 
+
+$violet: #5964e0;
+$lightViolet: #939bf4;
+$VeryDarkBlue: #19202d;
+$Midnight: #121721;
+
+
+
+$White: #d6d6d6;
+$LightGray: #f4f6f8;
+$Gray: #9daec2;
+$DarkGray: #6e8098;
+*/
+
+body {
+  background: $LightGray;
+}
+.header-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 160px;
+  border-radius: 0px 0px 0px 100px;
+  background: $violet;
+  overflow: hidden;
+  z-index: -1;
+}
+.first-decoration,
+.second-decoration,
+.third-decoration {
+  position: absolute;
+}
+.first-decoration {
+  top: 24px;
+}
+.second-decoration {
+  left: 380px;
+}
+.third-decoration {
+  left: 85rem;
+}
+.header-container {
+  display: flex;
+}
+.bg-container {
+  display: flex;
+  width: 100%;
+  height: 160px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.header-center {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  height: 30px;
+  margin-bottom: 40px;
+  max-width: 100rem;
+}
+.darkLight-container {
+  position: relative;
+  background: $White;
+  width: 48px;
+  height: 24px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+.ball {
+  width: 15px;
+  height: 15px;
+  margin-left: 5px;
+  margin-top: 0.5px;
+  background: $violet;
+  border-radius: 100%;
+  transition: all 0.2s ease-out;
+}
+.switch {
+  margin-left: 28px;
+  transition: all 0.2s ease-out;
+}
+.theme-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.moon {
+  width: 20px;
+  height: 20px;
+}
+.filter-container {
+  display: flex;
+  position: absolute;
+
+  width: 80%;
+  height: 80px;
+  top: 120px;
+  border-radius: 6px;
+  background: $White;
+  max-width: 100rem;
+}
+.search-container,
+.location-container,
+.rate-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 30px;
+}
+.search-container {
+  border-right: 1px solid $LightGray;
+  width: 50%;
+}
+.location-container {
+  border-right: 1px solid $LightGray;
+  width: 25%;
+}
+.rate-container {
+  width: 25%;
+}
+
+.location-input,
+.search-input {
+  min-width: 90%;
+  max-width: 328px;
+  height: 100%;
+  font-size: 1rem;
+  caret-color: $violet;
+  outline: none;
+  border: none;
+  font-weight: 400;
+}
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: $violet;
+  cursor: pointer;
+}
+.rate-label {
+  font-size: 1rem;
+}
