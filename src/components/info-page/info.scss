@@ -1,0 +1,167 @@
+@import "/src/Config/config-colors.scss";
+.info-container {
+  display: grid;
+  // justify-content: space-between;
+}
+
+.info-center-box {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 47.5rem;
+  bottom: 65px;
+  margin: 0 auto;
+  gap: 32px;
+}
+.info-header {
+  display: flex;
+  // border: 1px solid red;
+  height: 140px;
+  background: var(--secondary-background);
+  border-radius: 6px;
+}
+.info-logo {
+  width: 140px;
+}
+.logo-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 6px 0 0 6px;
+  width: 140px;
+  height: 140px;
+  padding: 20px 30px;
+}
+.company-title {
+  color: var(--text-color);
+}
+.company-web {
+  text-transform: lowercase;
+  color: $DarkGray;
+}
+.company-name-box {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+.company-name-position {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;
+  align-items: center;
+}
+.info-page-container {
+  // border: 1px solid orange;
+  border-radius: 6px;
+  padding: 48px;
+  background: var(--secondary-background);
+}
+.posted-at_contract {
+  display: flex;
+  gap: 12px;
+  color: $DarkGray;
+}
+.position_button {
+  display: flex;
+  justify-content: space-between;
+}
+.position_button h1 {
+  color: var(--text-color);
+  font-size: 1.75rem;
+}
+.position_location {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.position_location p {
+  color: $violet;
+  font-weight: 700;
+}
+.description {
+  margin-top: 46px;
+}
+.description,
+.content,
+.list span,
+.orderList span,
+.role {
+  color: $DarkGray;
+  font-size: 1rem;
+  font-weight: 400;
+}
+.list span,
+.orderList span {
+  margin-left: 20px;
+  display: block;
+}
+.list::marker,
+.orderList::marker {
+  color: $violet;
+}
+ul,
+ol {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: start;
+  margin-left: 20px;
+  margin-top: 24px;
+}
+.content {
+  margin-top: 28px;
+}
+.requirements,
+.will-do {
+  color: var(--text-color);
+  font-size: 1.25rem;
+}
+.requirements {
+  margin-top: 40px;
+}
+.will-do {
+  margin-top: 48px;
+}
+.role {
+  margin-top: 28px;
+}
+footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 96px;
+  background: var(--secondary-background);
+}
+.footer-center-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 47.5rem;
+}
+.position_digital {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.position_digital h3 {
+  color: var(--text-color);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+.position_digital p {
+  color: $DarkGray;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 810px) {
+  .info-center-box {
+    width: 100%;
+  }
+  .footer-center-box {
+    width: 100%;
+    padding: 0 40px;
+  }
+}

@@ -1,0 +1,16 @@
+@import "/src/Config/config-colors.scss";
+
+.company-button {
+  width: 147px;
+  height: 48px;
+  border-radius: 5px;
+  background: var(--company-button-bg);
+  color: var(--company-button-text);
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.company-button:hover {
+  background: var(--company-button-hover);
+}

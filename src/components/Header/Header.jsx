@@ -8,9 +8,42 @@ import searchIcon from "../../assets/icon-search.svg";
 import locationIcon from "../../assets/icon-location.svg";
 import { Button } from "../Button";
 import { useState } from "react";
+import data from "/src/data";
 
-export const Header = () => {
+export const Header = (props) => {
   const [theme, setTheme] = useState(false);
+
+  const setDarkMode = () => {
+    document.querySelector("body").setAttribute("data-theme", "dark");
+  };
+
+  const setLightMode = () => {
+    document.querySelector("body").setAttribute("data-theme", "light");
+  };
+
+  const toggleTheme = () => {
+    setTheme(!theme);
+    if (!theme) setDarkMode();
+    else setLightMode();
+  };
+
+  const contractFilter = (e) => {
+    props.setNika(!props.nika);
+    const filter = props.jobsData.filter((item) => {
+      if (item.contract === "Full Time") {
+        return true;
+      }
+    });
+
+    if (e.target.checked) {
+      props.setJobsData(filter);
+      props.setLoadMore(true);
+    } else {
+      props.setJobsData(data);
+      props.setLoadMore(false);
+    }
+  };
+
   return (
     <>
       <div className="header-container">
@@ -27,10 +60,7 @@ export const Header = () => {
 
             <div className="theme-container">
               <img src={iconSun} />
-              <button
-                className="darkLight-container"
-                onClick={() => setTheme(!theme)}
-              >
+              <button className="darkLight-container" onClick={toggleTheme}>
                 <div className={`ball ${theme ? "switch" : ""}`}></div>
               </button>
               <img
@@ -40,29 +70,36 @@ export const Header = () => {
               />
             </div>
           </div>
-          <div className="filter-container">
-            <div className="search-container">
-              <img src={searchIcon} alt="" />
-              <input
-                className="search-input"
-                type="text"
-                placeholder="Filter by title, companies, expertise…"
-              />
+          {props.infoPageOpen ? null : (
+            <div className="filter-container">
+              <div className="search-container">
+                <img src={searchIcon} alt="" />
+                <input
+                  className="search-input"
+                  type="text"
+                  placeholder="Filter by title, companies, expertise…"
+                />
+              </div>
+              <div className="location-container">
+                <img src={locationIcon} alt="" />
+                <input
+                  className="location-input"
+                  type="text"
+                  placeholder="Filter by location…"
+                />
+              </div>
+              <div className="rate-container">
+                <input
+                  type="checkbox"
+                  name="contract"
+                  value="Full Time"
+                  onChange={contractFilter}
+                />
+                <h3 className="rate-label">Full Time Only</h3>
+                <Button name={"Search"} />
+              </div>
             </div>
-            <div className="location-container">
-              <img src={locationIcon} alt="" />
-              <input
-                className="location-input"
-                type="text"
-                placeholder="Filter by location…"
-              />
-            </div>
-            <div className="rate-container">
-              <input type="checkbox" />
-              <h3 className="rate-label">Full Time Only</h3>
-              <Button name={"Search"} />
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </>

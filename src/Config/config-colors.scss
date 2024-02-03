@@ -10,3 +10,28 @@ $White: #ffffff;
 $LightGray: #f4f6f8;
 $Gray: #9daec2;
 $DarkGray: #6e8098;
+
+:root {
+  --body-Background: #f4f6f8;
+  --secondary-background: #ffffff;
+  --border-color: #f4f6f8;
+  --text-color: black;
+  --company-button-bg: rgba(89, 100, 224, 0.1);
+  --company-button-hover: rgba(89, 100, 224, 0.35);
+  --company-button-text: #5964e0;
+}
+[data-theme="dark"] {
+  --body-Background: #121721;
+  --secondary-background: #19202d;
+  --border-color: #333b44;
+  --text-color: #ffffff;
+  --company-button-bg: rgba(255, 255, 255, 0.1);
+  --company-button-hover: rgba(255, 255, 255, 0.35);
+  --company-button-text: #ffffff;
+}
+
+%dot-style {
+  position: relative;
+  font-size: 22px;
+  bottom: 3.8px;
+}
