@@ -17,3 +17,6 @@
   background: $lightViolet;
   transition: all 0.3s;
 }
+.button:disabled {
+  opacity: 0.5;
+}

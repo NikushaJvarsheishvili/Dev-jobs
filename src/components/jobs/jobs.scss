@@ -14,7 +14,7 @@
   border: none;
   text-align: start;
   cursor: pointer;
-  outline: none;
+  outline-color: $violet;
 }
 .jobs-container {
   display: flex;
@@ -65,7 +65,7 @@
 .dot {
   @extend %dot-style;
 }
-.nika {
+.jobListAnimation {
   animation: render 0.7s;
 }
 

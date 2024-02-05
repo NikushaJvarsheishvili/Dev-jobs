@@ -4,9 +4,8 @@ import { Button } from "../Button";
 export const Jobs = (props) => {
   const sliceNumber = props.loadMore ? 15 : 12;
 
-  console.log();
   const jobsMap = props.jobsData.slice(0, sliceNumber).map((job, jobIndex) => {
-    const logo = job.logo.slice(1, 100);
+    const logoImage = job.logo.slice(1, 100);
     return (
       <button
         onClick={() => {
@@ -16,7 +15,7 @@ export const Jobs = (props) => {
         className="job-card"
         key={jobIndex}
       >
-        <img className="logo" src={`/src/components/jobs${logo}`} alt="" />
+        <img className="logo" src={`/src/components/jobs${logoImage}`} alt="" />
         <div className="info">
           <p className="rate">
             {job.postedAt} <span className="dot">&#x2022;</span> {job.contract}
@@ -32,8 +31,12 @@ export const Jobs = (props) => {
   return (
     <>
       <div className="jobs-container">
-        <div className={`jobs-center-box ${props.nika ? "nika" : ""}`}>
-          {jobsMap}
+        <div
+          className={`jobs-center-box ${
+            props.jobListAnimation ? "jobListAnimation" : ""
+          }`}
+        >
+          {props.jobsData.length <= 0 ? <h1>Not Found</h1> : jobsMap}
         </div>
         {props.loadMore || (
           <Button onClick={() => props.setLoadMore(true)} name={"Load More"} />

@@ -136,3 +136,8 @@ input[type="checkbox"] {
   font-size: 1rem;
   color: var(--text-color);
 }
+
+form {
+  display: flex;
+  width: 100%;
+}

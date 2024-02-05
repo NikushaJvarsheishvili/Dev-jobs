@@ -11,8 +11,11 @@ function App() {
   const [contractCheckBox, setContractCheckBox] = useState("");
   const [jobIndex, setJobIndex] = useState();
   const [loadMore, setLoadMore] = useState(false);
-  const [nika, setNika] = useState(false);
+  const [jobListAnimation, setJobListAnimation] = useState(false);
 
+  // console.log(jobsData);
+
+   
   return (
     <>
       <Header
@@ -22,8 +25,8 @@ function App() {
         jobsData={jobsData}
         setJobsData={setJobsData}
         setLoadMore={setLoadMore}
-        setNika={setNika}
-        nika={nika}
+        setJobListAnimation={setJobListAnimation}
+        jobListAnimation={jobListAnimation}
       />
       {infoPageOpen ? (
         <Info jobIndex={jobIndex} jobsData={jobsData} />
@@ -34,7 +37,7 @@ function App() {
           jobsData={jobsData}
           loadMore={loadMore}
           setLoadMore={setLoadMore}
-          nika={nika}
+          jobListAnimation={jobListAnimation}
         />
       )}
     </>

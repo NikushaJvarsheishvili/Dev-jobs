@@ -11,6 +11,11 @@ import { useState } from "react";
 import data from "/src/data";
 
 export const Header = (props) => {
+  const [searchInputs, setSearchInputs] = useState({
+    byPosition: "",
+    byLocation: "",
+  });
+  const [previousJobsFilter, setPreviousJobsFilter] = useState(data);
   const [theme, setTheme] = useState(false);
 
   const setDarkMode = () => {
@@ -27,8 +32,51 @@ export const Header = (props) => {
     else setLightMode();
   };
 
+  const searchFilterFunction = (e) => {
+    setSearchInputs({
+      ...searchInputs,
+      byPosition: e.target.value.toLowerCase(),
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const searchLocationFilter = data.filter((item) => {
+      if (item.location.toLowerCase().includes(searchInputs.byLocation)) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+
+    const searchFilter = data.filter((item) => {
+      if (
+        (item.location.toLowerCase().includes(searchInputs.byLocation) &&
+          item.position.toLowerCase().includes(searchInputs.byPosition)) ||
+        item.company.toLowerCase().includes(searchInputs.byPosition)
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+
+    // props.setLoadMore(true);
+    setSearchInputs({ byPosition: "", byLocation: "" });
+
+    if (searchInputs.byPosition) {
+      setPreviousJobsFilter(searchFilter);
+      props.setJobsData(searchFilter);
+    } else {
+      setPreviousJobsFilter(searchLocationFilter);
+      props.setJobsData(searchLocationFilter);
+    }
+  };
+
   const contractFilter = (e) => {
-    props.setNika(!props.nika);
+    props.setJobListAnimation(!props.jobListAnimation);
+
     const filter = props.jobsData.filter((item) => {
       if (item.contract === "Full Time") {
         return true;
@@ -39,7 +87,7 @@ export const Header = (props) => {
       props.setJobsData(filter);
       props.setLoadMore(true);
     } else {
-      props.setJobsData(data);
+      props.setJobsData(previousJobsFilter);
       props.setLoadMore(false);
     }
   };
@@ -72,32 +120,48 @@ export const Header = (props) => {
           </div>
           {props.infoPageOpen ? null : (
             <div className="filter-container">
-              <div className="search-container">
-                <img src={searchIcon} alt="" />
-                <input
-                  className="search-input"
-                  type="text"
-                  placeholder="Filter by title, companies, expertise…"
-                />
-              </div>
-              <div className="location-container">
-                <img src={locationIcon} alt="" />
-                <input
-                  className="location-input"
-                  type="text"
-                  placeholder="Filter by location…"
-                />
-              </div>
-              <div className="rate-container">
-                <input
-                  type="checkbox"
-                  name="contract"
-                  value="Full Time"
-                  onChange={contractFilter}
-                />
-                <h3 className="rate-label">Full Time Only</h3>
-                <Button name={"Search"} />
-              </div>
+              <form onSubmit={handleSubmit}>
+                <div className="search-container">
+                  <img src={searchIcon} alt="" />
+                  <input
+                    className="search-input"
+                    type="text"
+                    value={searchInputs.byPosition}
+                    onChange={searchFilterFunction}
+                    placeholder="Filter by title, companies, expertise…"
+                  />
+                </div>
+                <div className="location-container">
+                  <img src={locationIcon} alt="" />
+                  <input
+                    className="location-input"
+                    type="text"
+                    placeholder="Filter by location…"
+                    value={searchInputs.byLocation}
+                    onChange={(e) =>
+                      setSearchInputs({
+                        ...searchInputs,
+                        byLocation: e.target.value,
+                      })
+                    }
+                  />
+                </div>
+                <div className="rate-container">
+                  <input
+                    type="checkbox"
+                    name="contract"
+                    value="Full Time"
+                    onChange={contractFilter}
+                  />
+                  <h3 className="rate-label">Full Time Only</h3>
+                  <Button
+                    name={"Search"}
+                    disabled={
+                      !searchInputs.byPosition && !searchInputs.byLocation
+                    }
+                  />
+                </div>
+              </form>
             </div>
           )}
         </div>
